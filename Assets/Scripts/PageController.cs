@@ -39,7 +39,7 @@ public class PageController : MonoBehaviour
     }
     public void OpenLeftPage() { if ((CurrentPageID + 1) < (4)) { Debug.Log("LeftPage"); ShowPanel(CurrentPageID + 1); } }
     public void OpenRightPage() { if ((CurrentPageID - 1) >= 0) { Debug.Log("RightPage"); ShowPanel(CurrentPageID - 1); } }
-    void ShowPanel(int id) { StartCoroutine(DelayShow(id, 0.75f)); }
+    void ShowPanel(int id) { StartCoroutine(DelayShow(id, 0.75f));  }
     //void HidePanel(int id) { StartCoroutine(DelayHide(id, 0.75f)); }
     void HideAll()
     {
@@ -48,12 +48,17 @@ public class PageController : MonoBehaviour
             StartCoroutine(DelayHide(i, 0.25f));
         }
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown("t")) { GameObject.Find("AnimationController").GetComponent<AnimationControls>().OnToggleChangeSwing(); }
+    }
     IEnumerator DelayShow(int id, float time)
     {
         CheckButtonsInteraction(id);
         yield return new WaitForSeconds(0.15f);
         HideAll();
         yield return new WaitForSeconds(time);
+        if (id == 0) { GameObject.Find("AnimationController").GetComponent<AnimationControls>().ActivateButton(3); }
         CurrentPageID = id;
         CurrentPage_LeftID = (id*2);
         CurrentPage_RightID = (id*2) + 1;

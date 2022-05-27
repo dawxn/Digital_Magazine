@@ -12616,6 +12616,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AnimatioObject: {fileID: 984060654}
+  Toggles:
+  - {fileID: 267510860}
+  - {fileID: 1451575854}
+  - {fileID: 694125849}
+  - {fileID: 1867700308}
+  - {fileID: 253064002}
 --- !u!4 &1305060053
 Transform:
   m_ObjectHideFlags: 0
